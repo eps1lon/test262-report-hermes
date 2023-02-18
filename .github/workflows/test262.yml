@@ -36,7 +36,7 @@ jobs:
             --reporter-keys result,relative,attrs.features,scenario \
             --test262-dir test262 \
             --threads 2 \
-            "test262/test/built-ins/Array/from/**/*.js" > test262-report.${{matrix.shard}}.json
+            "test262/test/**/*.js" > test262-report.${{matrix.shard}}.json
       - name: Archive test262 report
         uses: actions/upload-artifact@v3
         with:
