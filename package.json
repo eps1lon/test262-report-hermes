@@ -5,8 +5,7 @@
     "build:test-target": "scripts/build-test-target-release.sh",
     "hermes": "./hermes-release/bin/hermes",
     "hermes:verify": "TODO: check if hermes submodule tag matches bundled .hermesversion in RN",
-    "playground": "yarn hermes -exec playground/playground.js",
-    "postinstall": "git submodule init"
+    "playground": "yarn hermes -exec playground/playground.js"
   },
   "devDependencies": {
     "debug": "^4.3.4",

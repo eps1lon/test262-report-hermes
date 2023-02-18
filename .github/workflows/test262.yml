@@ -6,10 +6,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shard:
-          [0, 1]
+        # Ensure SHARD_TOTAL is updated with the number of shards declared here
+        shard: [0, 1]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 1
           submodules: true
@@ -21,19 +21,23 @@ jobs:
         env:
           DEBUG: "this:*"
           SHARD_INDEX: ${{matrix.shard}}
+          # Number of entries in test.strategy.matrix.shard
+          # We could use ${{ strategy.job-total }} but that breaks once we introduce more dimensions beyond "shard" (e.g. architecture)
           SHARD_TOTAL: 2
         run: |
+          # --threads matches number of cores available in runner
+          # See https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources
           yarn test262-harness \
             --host-type hermes \
             --host-path hermes-releases/RNv0.71.0/hermes \
             --preprocessor scripts/test/eshostPreprocessor.js \
-            --threads 2 "test262/test/built-ins/Array/from/**/*.js" \
             --reporter json \
             --reporter-keys result,relative,attrs.features,scenario \
-            --test262-dir test262 > result.${{matrix.shard}}.json
+            --test262-dir test262 \
+            --threads 2 \
+            "test262/test/built-ins/Array/from/**/*.js" > test262-report.${{matrix.shard}}.json
       - name: Archive test262 report
         uses: actions/upload-artifact@v3
         with:
           name: test262-report-${{matrix.shard}}
-          path: result.${{matrix.shard}}.json
-
+          path: test262-report.${{matrix.shard}}.json
