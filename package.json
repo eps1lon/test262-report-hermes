@@ -2,21 +2,30 @@
   "name": "test262-report-hermes",
   "packageManager": "yarn@3.4.1",
   "scripts": {
+    "build:website": "next build",
     "build:test-target": "scripts/build-test-target-release.sh",
+    "dev": "next dev",
     "hermes": "./hermes-release/bin/hermes",
     "hermes:verify": "TODO: check if hermes submodule tag matches bundled .hermesversion in RN",
-    "playground": "yarn hermes -exec playground/playground.js"
+    "playground": "yarn hermes -exec playground/playground.js",
+    "start": "next start"
   },
   "devDependencies": {
+    "@types/react": "18.0.28",
     "debug": "^4.3.4",
     "react": "18.2.0",
     "react-native": "^0.71.3",
-    "test262-harness": "^10.0.0"
+    "test262-harness": "^10.0.0",
+    "typescript": "4.9.5"
   },
   "volta": {
     "node": "18.14.1"
   },
   "resolutions": {
     "eshost@^9.0.0": "patch:eshost@patch%3Aeshost@npm%253A9.0.0%23./.yarn/patches/eshost-npm-9.0.0-58e194371d.patch%3A%3Aversion=9.0.0&hash=67750e&locator=test262-report-hermes%2540workspace%253A.#./.yarn/patches/eshost-patch-7bcce7a424.patch"
+  },
+  "dependencies": {
+    "next": "^13.1.6",
+    "react-dom": "^18.2.0"
   }
 }
