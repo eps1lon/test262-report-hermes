@@ -15,9 +15,9 @@
     "test262-harness": "^10.0.0"
   },
   "volta": {
-    "node": "14.21.3"
+    "node": "18.14.1"
   },
   "resolutions": {
-    "eshost@^9.0.0": "patch:eshost@npm%3A9.0.0#./.yarn/patches/eshost-npm-9.0.0-58e194371d.patch"
+    "eshost@^9.0.0": "patch:eshost@patch%3Aeshost@npm%253A9.0.0%23./.yarn/patches/eshost-npm-9.0.0-58e194371d.patch%3A%3Aversion=9.0.0&hash=67750e&locator=test262-report-hermes%2540workspace%253A.#./.yarn/patches/eshost-patch-7bcce7a424.patch"
   }
 }

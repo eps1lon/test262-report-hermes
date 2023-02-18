@@ -1,0 +1,39 @@
+name: test262
+on: workflow_dispatch
+jobs:
+  test:
+    runs-on: ubuntu-22.04
+    strategy:
+      fail-fast: false
+      matrix:
+        shard:
+          [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19]
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+          submodules: true
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: yarn install --immutable --immutable-cache
+      - name: Run test262
+        env:
+          DEBUG: "this:*"
+          SHARD_INDEX: ${{matrix.shard}}
+          SHARD_TOTAL: 20
+        run: |
+          yarn test262-harness \
+            --host-type hermes \
+            --host-path hermes-releases/RNv0.71.0/hermes \
+            --preprocessor scripts/test/eshostPreprocessor.js \
+            --threads 2 "test262/test/built-ins/Array/from/**/*.js" \
+            --reporter json \
+            --reporter-keys result,relative,attrs.features,scenario \
+            --test262-dir test262 > result.${{matrix.shard}}.json
+      - name: Archive test262 report
+        uses: actions/upload-artifact@v3
+        with:
+          name: test262-report-${{matrix.shard}}
+          path: result.${{matrix.shard}}.json
+

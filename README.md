@@ -3,13 +3,11 @@
 ## TODO
 
 - strict vs non strict?
-- check-in built Hermes binary
-- run in CI?
 - trim down report-key
 - ACTUAL PAGE
 
 ## Playground
 
 ```bash
-$ DEBUG="this:*" SHARD_INDEX=0 SHARD_TOTAL=8 yarn test262-harness --host-type hermes --host-path hermes-release/bin/hermes --test262-dir test262 "test262/test/built-ins/Array/from/**/*.js" --reporter json --reporter-keys attrs,scenario,relative,result --preprocessor scripts/test/test262StreamShardPreprocessor.js --threads 2
+$ DEBUG="this:*" SHARD_INDEX=0 SHARD_TOTAL=1 yarn test262-harness --host-type hermes --host-path hermes-releases/RNv0.71.0/hermes --test262-dir test262 --reporter json --reporter-keys result,relative,attrs.features,scenario --preprocessor scripts/test/eshostPreprocessor.js --threads 16 "test262/test/**/*.js" > data/RNv0.71.0/rawresult.combined.json
 ```
