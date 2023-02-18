@@ -2842,7 +2842,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eshost@patch:eshost@npm%3A9.0.0#./.yarn/patches/eshost-npm-9.0.0-58e194371d.patch::locator=test262-report-hermes%40workspace%3A.":
+"eshost@patch:eshost@npm%3A9.0.0#./.yarn/patches/eshost-npm-9.0.0-58e194371d.patch::version=9.0.0&hash=67750e&locator=test262-report-hermes%40workspace%3A.":
   version: 9.0.0
   resolution: "eshost@patch:eshost@npm%3A9.0.0#./.yarn/patches/eshost-npm-9.0.0-58e194371d.patch::version=9.0.0&hash=67750e&locator=test262-report-hermes%40workspace%3A."
   dependencies:
@@ -2854,6 +2854,21 @@ __metadata:
     socket.io: ^2.3.0
     unique-temp-dir: ^1.0.0
   checksum: c8d8936530a1486117655e650cd0a3ee3c62184509c8539342c97ede50516d79be813f30e1550a06f19ad43c80cead725b337239e7f22b3b60aeae246e319237
+  languageName: node
+  linkType: hard
+
+"eshost@patch:eshost@patch%3Aeshost@npm%253A9.0.0%23./.yarn/patches/eshost-npm-9.0.0-58e194371d.patch%3A%3Aversion=9.0.0&hash=67750e&locator=test262-report-hermes%2540workspace%253A.#./.yarn/patches/eshost-patch-7bcce7a424.patch::locator=test262-report-hermes%40workspace%3A.":
+  version: 9.0.0
+  resolution: "eshost@patch:eshost@patch%3Aeshost@npm%253A9.0.0%23./.yarn/patches/eshost-npm-9.0.0-58e194371d.patch%3A%3Aversion=9.0.0&hash=67750e&locator=test262-report-hermes%2540workspace%253A.#./.yarn/patches/eshost-patch-7bcce7a424.patch::version=9.0.0&hash=e2077d&locator=test262-report-hermes%40workspace%3A."
+  dependencies:
+    error-stack-parser: ^1.3.3
+    is-symlink: ^0.1.1
+    recast: ^0.17.5
+    selenium-webdriver: ^4.0.0-alpha.1
+    server-destroy: ^1.0.1
+    socket.io: ^2.3.0
+    unique-temp-dir: ^1.0.0
+  checksum: f9cc475006bbdb12bd80cf501d80600e0bb8719200cc6b73e90a371eaea1f3ce183267aa115e5d3acb8185533b82dfc30bd7ab3384113f6fd677c10c377957ab
   languageName: node
   linkType: hard
 
@@ -5534,6 +5549,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react@npm:18.2.0":
+  version: 18.2.0
+  resolution: "react@npm:18.2.0"
+  dependencies:
+    loose-envify: ^1.1.0
+  checksum: 88e38092da8839b830cda6feef2e8505dec8ace60579e46aa5490fc3dc9bba0bd50336507dc166f43e3afc1c42939c09fe33b25fae889d6f402721dcd78fca1b
+  languageName: node
+  linkType: hard
+
 "readable-stream@npm:^3.4.0, readable-stream@npm:^3.6.0":
   version: 3.6.0
   resolution: "readable-stream@npm:3.6.0"
@@ -6454,6 +6478,7 @@ __metadata:
   dependencies:
     debug: ^4.3.4
     patch-package: ^6.5.1
+    react: 18.2.0
     react-native: ^0.71.3
     test262-harness: ^10.0.0
   languageName: unknown
