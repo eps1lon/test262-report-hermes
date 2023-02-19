@@ -40,7 +40,7 @@ async function main() {
     outputRoot,
     "test262-report.combined.dev.json"
   );
-  debug(`combined output written to ${combinedOutputPath}`);
+  debug(`combined output written to ${combinedDevOutputPath}`);
   const compressedOutputPath = path.join(
     outputRoot,
     "test262-report.compressed.json"
@@ -52,7 +52,7 @@ async function main() {
   );
   debug(`compressed dev output written to ${compressedDevOutputPath}`);
 
-  await fs.mkdir(path.dirname(combinedOutputPath), { recursive: true });
+  await fs.mkdir(path.dirname(combinedDevOutputPath), { recursive: true });
   await Promise.all([
     fs.writeFile(
       combinedDevOutputPath,
