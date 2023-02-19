@@ -19,9 +19,6 @@ function shardPreprocessor(test, index) {
   }
 
   const targetShard = index % shardTotal;
-  if (test.relative === "built-ins/Array/is-a-constructor.js") {
-    debug(JSON.stringify({ shardIndex, shardTotal, targetShard, index }));
-  }
   if (shardIndex === targetShard) {
     return test;
   } else {
