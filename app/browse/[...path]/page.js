@@ -6,7 +6,7 @@ export const dynamicParams = true;
 
 export async function generateStaticParams() {
   // TODO: Why can't this be empty? https://github.com/vercel/next.js/issues/45850?
-  return [{ path: ["default"] }];
+  return [{ path: ["language"] }];
 }
 
 export default async function BrowsePage({ params }) {
