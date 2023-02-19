@@ -26,12 +26,25 @@ function addTally(partial: ReportSummary, add: ReportSummary) {
 }
 
 function tallyTests(node: any): ReportSummary {
-  if ("result" in node && "attrs" in node && "scenario" in node) {
-    return {
-      total: 1,
-      passed: node.result.pass ? 1 : 0,
-      failed: node.result.pass ? 0 : 1,
+  if ("strict" in node && "attrs" in node && "nonStrict" in node) {
+    const summary = {
+      total: 0,
+      passed: 0,
+      failed: 0,
     };
+
+    if ("pass" in node.strict) {
+      summary.total += 1;
+      summary.passed += node.strict.pass ? 1 : 0;
+      summary.failed += node.strict.pass ? 0 : 1;
+    }
+    if ("pass" in node.nonStrict) {
+      summary.total += 1;
+      summary.passed += node.nonStrict.pass ? 1 : 0;
+      summary.failed += node.nonStrict.pass ? 0 : 1;
+    }
+
+    return summary;
   }
 
   return Object.values(node).reduce<ReportSummary>(
