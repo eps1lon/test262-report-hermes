@@ -4,10 +4,12 @@ import ReportSummary from "@/components/ReportSummary";
 
 export const dynamicParams = true;
 
-export async function generateStaticParams() {
-  // TODO: Why can't this be empty? https://github.com/vercel/next.js/issues/45850?
-  return [{ path: ["language"] }];
-}
+// ErrorBoundary doesn't work with generateStaticParams
+// `yarn build` doesn't work without generateStaticParams
+// export async function generateStaticParams() {
+//   // TODO: Why can't this be empty? https://github.com/vercel/next.js/issues/45850?
+//   return [{ path: ["language"] }];
+// }
 
 export default async function BrowsePage({ params }) {
   return (
