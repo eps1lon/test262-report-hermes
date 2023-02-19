@@ -141,4 +141,4 @@ hermes-release/
 playground/playground.js
 
 test262-report-shards/
-report.zip
+*.zip
