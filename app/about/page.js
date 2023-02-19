@@ -7,6 +7,12 @@ export default async function AboutPage() {
   return (
     <>
       <h1 className="text-lg">About Hermes test262 report</h1>
+      <p>
+        Source code for this website and how data is collected:{" "}
+        <Link href="https://github.com/eps1lon/test262-report-hermes">
+          eps1lon/test262-report-hermes
+        </Link>
+      </p>
       <dl>
         <dt>React Native version of bundled Hermes</dt>
         <dd>{hermesVersion.reactNativeVersion}</dd>
