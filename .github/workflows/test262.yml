@@ -62,8 +62,6 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           path: test262-report-shards
-      - name: Display structure of downloaded files
-        run: ls -laR ${{steps.download-shards.outputs.download-path}}
       - name: Postprocess shards
         run: node scripts/test/reportPostprocess.js ${{steps.download-shards.outputs.download-path}} "hermes-releases/$HERMES_RELEASE/report"
         env:
@@ -73,3 +71,5 @@ jobs:
         with:
           name: report
           path: hermes-releases/${{env.HERMES_RELEASE}}/report
+      - name: Display report diff
+        run: git diff -- hermes-releases/${{env.HERMES_RELEASE}}/report
