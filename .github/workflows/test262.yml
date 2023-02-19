@@ -1,5 +1,5 @@
 name: test262
-on: push
+on: workflow_dispatch
 env:
   HERMES_RELEASE: RNv0.71.0
 jobs:
@@ -10,7 +10,7 @@ jobs:
       matrix:
         shard:
           # Ensure SHARD_TOTAL is updated with the number of shards declared here
-          [0, 1]
+          [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19]
     steps:
       - uses: actions/checkout@v3
         with:
@@ -26,7 +26,7 @@ jobs:
           SHARD_INDEX: ${{matrix.shard}}
           # Number of entries in test.strategy.matrix.shard
           # We could use ${{ strategy.job-total }} but that breaks once we introduce more dimensions beyond "shard" (e.g. architecture)
-          SHARD_TOTAL: 2
+          SHARD_TOTAL: 20
         run: |
           # --threads matches number of cores available in runner
           # See https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources
@@ -38,7 +38,7 @@ jobs:
             --reporter-keys result,relative,attrs.features,scenario \
             --test262-dir test262 \
             --threads 2 \
-            "test262/test/language/function-code/**/*.js" > test262-report.${{matrix.shard}}.json
+            "test262/test/**/*.js" > test262-report.${{matrix.shard}}.json
       - name: Archive test262 report
         uses: actions/upload-artifact@v3
         with:
