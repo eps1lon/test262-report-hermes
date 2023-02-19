@@ -66,8 +66,10 @@ jobs:
         run: ls -laR ${{steps.download-shards.outputs.download-path}}
       - name: Postprocess shards
         run: node scripts/test/reportPostprocess.js ${{steps.download-shards.outputs.download-path}} "hermes-releases/$HERMES_RELEASE/report"
+        env:
+          DEBUG: "this:*"
       - name: Archive processed test262 report
         uses: actions/upload-artifact@v3
         with:
           name: report
-          path: "hermes-releases/$HERMES_RELEASE/report"
+          path: hermes-releases/${{env.HERMES_RELEASE}}/report
