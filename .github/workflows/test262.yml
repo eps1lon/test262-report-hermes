@@ -1,6 +1,7 @@
 name: test262
 on: workflow_dispatch
 env:
+  DEBUG: "this:*"
   HERMES_RELEASE: RNv0.71.0
 jobs:
   test:
@@ -22,7 +23,6 @@ jobs:
       - run: yarn install --immutable --immutable-cache
       - name: Run test262
         env:
-          DEBUG: "this:*"
           SHARD_INDEX: ${{matrix.shard}}
           # Number of entries in test.strategy.matrix.shard
           # We could use ${{ strategy.job-total }} but that breaks once we introduce more dimensions beyond "shard" (e.g. architecture)
@@ -64,8 +64,6 @@ jobs:
           path: test262-report-shards
       - name: Postprocess shards
         run: node scripts/test/reportPostprocess.js ${{steps.download-shards.outputs.download-path}} "hermes-releases/$HERMES_RELEASE/report"
-        env:
-          DEBUG: "this:*"
       - name: Archive processed test262 report
         uses: actions/upload-artifact@v3
         with:
