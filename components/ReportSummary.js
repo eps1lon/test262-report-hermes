@@ -2,24 +2,24 @@ import Link from "next/link";
 import * as React from "react";
 import test262ReportSummary, { loadReport } from "../src/test262ReportSummary";
 
-function TestResult({ test }) {
-  if (test.result.pass) {
+function TestResult({ label, result }) {
+  if (result.pass) {
     return (
       <span className="text-green-900 p-1 border-green-700 border-2">
-        Passing
+        {label} Passing
       </span>
     );
   }
 
   return (
     <details>
-      <summary>
-        <span className="text-red-900 p-1 border-red-700 border-2">
-          Failing
+      <summary className="p-1">
+        <span className="p-1 text-red-900 border-red-700 border-2">
+          {label} Failing
         </span>
       </summary>
 
-      <pre>{String(test.result.message)}</pre>
+      <pre>{String(result.message)}</pre>
     </details>
   );
 }
@@ -59,7 +59,7 @@ async function TestSource({ path }) {
 async function TestSummary({ path }) {
   const relativePathOnGH = `test/${path.join("/")}`;
 
-  const [report, testSource] = await Promise.all([loadReport()]);
+  const [report] = await Promise.all([loadReport()]);
   let test = report;
   for (const key of path) {
     if (!(key in test)) {
@@ -77,7 +77,12 @@ async function TestSummary({ path }) {
   return (
     <section className="py-1">
       <div>
-        <TestResult test={test} />
+        {"pass" in test.strict && (
+          <TestResult label="Strict mode" result={test.strict} />
+        )}
+        {"pass" in test.nonStrict && (
+          <TestResult label="non-Strict mode" result={test.nonStrict} />
+        )}
       </div>
       <div>
         Features:
@@ -93,7 +98,6 @@ async function TestSummary({ path }) {
             : "∅"}
         </ul>
       </div>
-      <div>Scenario: {test.scenario}</div>
       <details>
         <summary>Source code</summary>
 
