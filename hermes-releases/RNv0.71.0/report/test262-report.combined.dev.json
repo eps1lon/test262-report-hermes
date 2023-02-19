@@ -19,7 +19,7 @@
     "result": {
       "pass": true
     },
-    "relative": "language/function-code/10.4.3-1-100gs.js",
+    "relative": "language/function-code/10.4.3-1-101-s.js",
     "attrs": {},
     "scenario": "default"
   },
@@ -27,7 +27,7 @@
     "result": {
       "pass": true
     },
-    "relative": "language/function-code/10.4.3-1-101-s.js",
+    "relative": "language/function-code/10.4.3-1-100gs.js",
     "attrs": {},
     "scenario": "default"
   },
@@ -67,18 +67,18 @@
   {
     "result": {
       "pass": false,
-      "message": "Expected no error, got ESHostError: typeof (5).x Expected SameValue(«object», «number») to be true"
+      "message": "Expected no error, got ESHostError: Expected SameValue(«object», «undefined») to be true"
     },
-    "relative": "language/function-code/10.4.3-1-106.js",
+    "relative": "language/function-code/10.4.3-1-11-s.js",
     "attrs": {},
     "scenario": "strict mode"
   },
   {
     "result": {
       "pass": false,
-      "message": "Expected no error, got ESHostError: Expected SameValue(«object», «undefined») to be true"
+      "message": "Expected no error, got ESHostError: typeof (5).x Expected SameValue(«object», «number») to be true"
     },
-    "relative": "language/function-code/10.4.3-1-11-s.js",
+    "relative": "language/function-code/10.4.3-1-106.js",
     "attrs": {},
     "scenario": "strict mode"
   },
@@ -505,7 +505,7 @@
     "result": {
       "pass": true
     },
-    "relative": "language/function-code/10.4.3-1-58-s.js",
+    "relative": "language/function-code/10.4.3-1-57gs.js",
     "attrs": {},
     "scenario": "strict mode"
   },
@@ -513,7 +513,7 @@
     "result": {
       "pass": true
     },
-    "relative": "language/function-code/10.4.3-1-57gs.js",
+    "relative": "language/function-code/10.4.3-1-58-s.js",
     "attrs": {},
     "scenario": "strict mode"
   },
@@ -787,7 +787,7 @@
     "result": {
       "pass": true
     },
-    "relative": "language/function-code/10.4.3-1-75-s.js",
+    "relative": "language/function-code/10.4.3-1-75gs.js",
     "attrs": {},
     "scenario": "default"
   },
@@ -795,7 +795,7 @@
     "result": {
       "pass": true
     },
-    "relative": "language/function-code/10.4.3-1-75gs.js",
+    "relative": "language/function-code/10.4.3-1-75-s.js",
     "attrs": {},
     "scenario": "default"
   },
@@ -1339,17 +1339,17 @@
     "result": {
       "pass": true
     },
-    "relative": "language/function-code/10.4.3-1-25gs.js",
+    "relative": "language/function-code/10.4.3-1-26gs.js",
     "attrs": {},
-    "scenario": "strict mode"
+    "scenario": "default"
   },
   {
     "result": {
       "pass": true
     },
-    "relative": "language/function-code/10.4.3-1-26gs.js",
+    "relative": "language/function-code/10.4.3-1-25gs.js",
     "attrs": {},
-    "scenario": "default"
+    "scenario": "strict mode"
   },
   {
     "result": {
@@ -1383,7 +1383,7 @@
       "pass": false,
       "message": "Expected no error, got ESHostError: f1() !== true"
     },
-    "relative": "language/function-code/10.4.3-1-30-s.js",
+    "relative": "language/function-code/10.4.3-1-31-s.js",
     "attrs": {},
     "scenario": "strict mode"
   },
@@ -1392,7 +1392,7 @@
       "pass": false,
       "message": "Expected no error, got ESHostError: f1() !== true"
     },
-    "relative": "language/function-code/10.4.3-1-31-s.js",
+    "relative": "language/function-code/10.4.3-1-30-s.js",
     "attrs": {},
     "scenario": "strict mode"
   },
@@ -1588,17 +1588,17 @@
     "result": {
       "pass": true
     },
-    "relative": "language/function-code/10.4.3-1-54-s.js",
+    "relative": "language/function-code/10.4.3-1-53gs.js",
     "attrs": {},
-    "scenario": "strict mode"
+    "scenario": "default"
   },
   {
     "result": {
       "pass": true
     },
-    "relative": "language/function-code/10.4.3-1-53gs.js",
+    "relative": "language/function-code/10.4.3-1-54-s.js",
     "attrs": {},
-    "scenario": "default"
+    "scenario": "strict mode"
   },
   {
     "result": {
@@ -1999,7 +1999,7 @@
     "result": {
       "pass": true
     },
-    "relative": "language/function-code/10.4.3-1-79gs.js",
+    "relative": "language/function-code/10.4.3-1-79-s.js",
     "attrs": {},
     "scenario": "strict mode"
   },
@@ -2007,7 +2007,7 @@
     "result": {
       "pass": true
     },
-    "relative": "language/function-code/10.4.3-1-79-s.js",
+    "relative": "language/function-code/10.4.3-1-79gs.js",
     "attrs": {},
     "scenario": "strict mode"
   },

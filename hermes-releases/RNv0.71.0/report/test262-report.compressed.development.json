@@ -15,19 +15,19 @@
         "attrs": {},
         "scenario": "strict mode"
       },
-      "10.4.3-1-100gs.js": {
-        "result": {
-          "pass": true
-        },
-        "attrs": {},
-        "scenario": "strict mode"
-      },
       "10.4.3-1-101-s.js": {
         "result": {
           "pass": true
         },
         "attrs": {},
         "scenario": "default"
+      },
+      "10.4.3-1-100gs.js": {
+        "result": {
+          "pass": true
+        },
+        "attrs": {},
+        "scenario": "strict mode"
       },
       "10.4.3-1-102-s.js": {
         "result": {
@@ -58,18 +58,18 @@
         "attrs": {},
         "scenario": "strict mode"
       },
-      "10.4.3-1-106.js": {
-        "result": {
-          "pass": false,
-          "message": "Expected no error, got ESHostError: typeof (5).x Expected SameValue(«object», «number») to be true"
-        },
-        "attrs": {},
-        "scenario": "strict mode"
-      },
       "10.4.3-1-11-s.js": {
         "result": {
           "pass": false,
           "message": "Expected no error, got ESHostError: Expected SameValue(«object», «undefined») to be true"
+        },
+        "attrs": {},
+        "scenario": "strict mode"
+      },
+      "10.4.3-1-106.js": {
+        "result": {
+          "pass": false,
+          "message": "Expected no error, got ESHostError: typeof (5).x Expected SameValue(«object», «number») to be true"
         },
         "attrs": {},
         "scenario": "strict mode"
@@ -442,14 +442,14 @@
         "attrs": {},
         "scenario": "default"
       },
-      "10.4.3-1-58-s.js": {
+      "10.4.3-1-57gs.js": {
         "result": {
           "pass": true
         },
         "attrs": {},
         "scenario": "default"
       },
-      "10.4.3-1-57gs.js": {
+      "10.4.3-1-58-s.js": {
         "result": {
           "pass": true
         },
@@ -689,14 +689,14 @@
         "attrs": {},
         "scenario": "strict mode"
       },
-      "10.4.3-1-75-s.js": {
+      "10.4.3-1-75gs.js": {
         "result": {
           "pass": true
         },
         "attrs": {},
         "scenario": "strict mode"
       },
-      "10.4.3-1-75gs.js": {
+      "10.4.3-1-75-s.js": {
         "result": {
           "pass": true
         },
@@ -1138,19 +1138,19 @@
         "attrs": {},
         "scenario": "default"
       },
-      "10.4.3-1-25gs.js": {
-        "result": {
-          "pass": true
-        },
-        "attrs": {},
-        "scenario": "strict mode"
-      },
       "10.4.3-1-26gs.js": {
         "result": {
           "pass": true
         },
         "attrs": {},
         "scenario": "default"
+      },
+      "10.4.3-1-25gs.js": {
+        "result": {
+          "pass": true
+        },
+        "attrs": {},
+        "scenario": "strict mode"
       },
       "10.4.3-1-27gs.js": {
         "result": {
@@ -1176,7 +1176,7 @@
         "attrs": {},
         "scenario": "strict mode"
       },
-      "10.4.3-1-30-s.js": {
+      "10.4.3-1-31-s.js": {
         "result": {
           "pass": false,
           "message": "Expected no error, got ESHostError: f1() !== true"
@@ -1184,7 +1184,7 @@
         "attrs": {},
         "scenario": "strict mode"
       },
-      "10.4.3-1-31-s.js": {
+      "10.4.3-1-30-s.js": {
         "result": {
           "pass": false,
           "message": "Expected no error, got ESHostError: f1() !== true"

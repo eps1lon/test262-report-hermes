@@ -34,6 +34,12 @@ async function main() {
   debug(
     `combined ${reportShardsFilepaths.length} shards into ${combinedReport.length} tests`
   );
+  combinedReport.sort((a, b) => {
+    if (a.relative === b.relative) {
+      return a.scenario.localeCompare(b.scenario);
+    }
+    return a.relative.localeCompare(b.relative);
+  });
   const compressedReport = compressCombinedReport(combinedReport);
 
   const combinedDevOutputPath = path.join(
