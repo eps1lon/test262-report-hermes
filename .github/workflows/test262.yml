@@ -28,8 +28,7 @@ jobs:
           # We could use ${{ strategy.job-total }} but that breaks once we introduce more dimensions beyond "shard" (e.g. architecture)
           SHARD_TOTAL: 10
         run: |
-          # --threads matches number of cores available in runner
-          # See https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources
+          # --threads with more than 1 produced unstable results i.e. some test results were not reported
           yarn test262-harness \
             --host-type hermes \
             --host-path "hermes-releases/$HERMES_RELEASE/hermes" \
@@ -37,7 +36,7 @@ jobs:
             --reporter json \
             --reporter-keys result,relative,attrs.features,scenario \
             --test262-dir test262 \
-            --threads 2 \
+            --threads 1 \
             "test262/test/**/*.js" > test262-report.${{matrix.shard}}.json
       - name: Archive test262 report
         uses: actions/upload-artifact@v3
