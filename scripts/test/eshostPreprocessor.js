@@ -19,7 +19,15 @@ function shardPreprocessor(test, index) {
   }
 
   const targetShard = index % shardTotal;
-  debug(JSON.stringify({ targetShard, shardIndex, shardTotal, index }));
+  debug(
+    JSON.stringify({
+      targetShard,
+      relative: test.relative,
+      shardIndex,
+      shardTotal,
+      index,
+    })
+  );
   if (shardIndex === targetShard) {
     return test;
   } else {
