@@ -27,6 +27,7 @@ async function main() {
       const test262ShardJson = await fs.readFile(shardFilepath, {
         encoding: "utf-8",
       });
+      debug(`read ${shardFilepath}`);
       const test262Shard = JSON.parse(test262ShardJson);
       combinedReport.push(...test262Shard);
     })
