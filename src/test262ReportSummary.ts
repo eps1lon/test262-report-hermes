@@ -1,3 +1,17 @@
+import * as fs from "node:fs/promises";
+import * as path from "node:path";
+import * as process from "node:process";
+
+const HERMES_RELEASE = "RNv0.71.0";
+
+export async function loadReport() {
+  const reportModule = await import(
+    `../hermes-releases/${HERMES_RELEASE}/report/test262-report.compressed.json`
+  );
+
+  return reportModule.default;
+}
+
 interface ReportSummary {
   total: number;
   passed: number;
@@ -28,12 +42,48 @@ function tallyTests(node: any): ReportSummary {
   );
 }
 
+interface HermesVersion {
+  createdAt: Date;
+  reactNativeVersion: string;
+  commit: string;
+}
+
+function parseHermesVersion(hermesVersionString): HermesVersion {
+  const [hermesIdentifier, year, month, day, rnTag, commitHash] =
+    hermesVersionString.split("-");
+  const [, reactNativeVersion] = rnTag.match(/RNv(.*)/);
+
+  return {
+    createdAt: new Date(year, month, day),
+    reactNativeVersion,
+    commit: commitHash,
+  };
+}
+
 export default async function test262ReportSummary(
-  path: string[]
-): Promise<Record<string, ReportSummary>> {
-  const report = await import("./test262-report.json");
+  testPath: string[]
+): Promise<{
+  summary: Record<string, ReportSummary>;
+  hermesVersion: HermesVersion;
+}> {
+  const [report, hermesVersionString] = await Promise.all([
+    loadReport(),
+    fs.readFile(
+      // https://github.com/vercel/next.js/discussions/32236
+      path.resolve(
+        process.cwd(),
+        `./hermes-releases/${HERMES_RELEASE}/.hermesversion`
+      ),
+      {
+        encoding: "utf-8",
+      }
+    ),
+  ]);
+
+  const hermesVersion = parseHermesVersion(hermesVersionString);
+
   let node = report;
-  for (const key of path) {
+  for (const key of testPath) {
     if (!(key in node)) {
       const error = new Error(
         `'${key}' does not exist. Should be one of ${Object.keys(node).join(
@@ -47,9 +97,11 @@ export default async function test262ReportSummary(
     node = node[key];
   }
 
-  return Object.fromEntries(
+  const summary = Object.fromEntries(
     Object.entries(node).map(([key, node]) => {
       return [key, tallyTests(node)];
     })
   );
+
+  return { summary, hermesVersion };
 }

@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+a {
+  @apply underline text-blue-600 hover:text-blue-800 visited:text-purple-600;
+}
+
+details {
+  padding-left: 1rem;
+}
+
+details summary {
+  /* offset the details padding */
+  margin-left: -1rem;
+}
+
+summary {
+  /* It's clickable so text cursor feels out-of-place */
+  cursor: default;
+}
