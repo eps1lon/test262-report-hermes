@@ -1,3 +1,4 @@
+import Link from "next/link";
 import test262ReportSummary from "../../src/test262ReportSummary";
 
 export default async function AboutPage() {
@@ -5,10 +6,20 @@ export default async function AboutPage() {
 
   return (
     <>
-      <h1>About Hermes test262 report</h1>
+      <h1 className="text-lg">About Hermes test262 report</h1>
       <dl>
-        <dt>React Native version of bundled hermes</dt>
+        <dt>React Native version of bundled Hermes</dt>
         <dd>{hermesVersion.reactNativeVersion}</dd>
+        <dt>Hermes release date</dt>
+        <dd>{hermesVersion.createdAt.toISOString().split("T")[0]}</dd>
+        <dt>Hermes commit</dt>
+        <dd>
+          <Link
+            href={`https://github.com/facebook/hermes/tree/${hermesVersion.commit}/`}
+          >
+            {hermesVersion.commit}
+          </Link>
+        </dd>
       </dl>
     </>
   );

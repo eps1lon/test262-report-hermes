@@ -10,13 +10,19 @@ export default async function RootLayout({ children }) {
     <html>
       <head />
       <body>
-        <header className="bg-hermes p-4 text-black">
+        <header className="bg-hermes p-4 text-black flex justify-between">
           <Link
             href="/"
             className="no-underline text-black hover:text-black visited:text-black"
           >
             Hermes for React Native {hermesVersion.reactNativeVersion}{" "}
             <strong>Test262</strong> report
+          </Link>
+          <Link
+            href="/about"
+            className="no-underline text-black hover:text-black visited:text-black pl-2 "
+          >
+            About
           </Link>
         </header>
         <main className="p-4">
