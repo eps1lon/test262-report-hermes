@@ -139,3 +139,5 @@ hermes-debug/
 hermes-release/
 
 playground/playground.js
+
+test262-report-shards/
