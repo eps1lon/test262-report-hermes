@@ -42,3 +42,20 @@ jobs:
         with:
           name: test262-report-${{matrix.shard}}
           path: test262-report.${{matrix.shard}}.json
+  postprocess:
+    runs-on: ubuntu-22.04
+    needs: test
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+          submodules: true
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: yarn install --immutable --immutable-cache
+
+      - name: Get test262 report shards
+        uses: actions/download-artifact@v3
+      - name: Display structure of downloaded files
+        run: ls -R
