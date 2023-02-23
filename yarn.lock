@@ -5939,7 +5939,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-error-boundary@npm:^3.1.4":
+"react-error-boundary@npm:3.1.4":
   version: 3.1.4
   resolution: "react-error-boundary@npm:3.1.4"
   dependencies:
@@ -5947,6 +5947,17 @@ __metadata:
   peerDependencies:
     react: ">=16.13.1"
   checksum: f36270a5d775a25c8920f854c0d91649ceea417b15b5bc51e270a959b0476647bb79abb4da3be7dd9a4597b029214e8fe43ea914a7f16fa7543c91f784977f1b
+  languageName: node
+  linkType: hard
+
+"react-error-boundary@patch:react-error-boundary@npm%3A3.1.4#./.yarn/patches/react-error-boundary-npm-3.1.4-2310dba89e.patch::locator=test262-report-hermes%40workspace%3A.":
+  version: 3.1.4
+  resolution: "react-error-boundary@patch:react-error-boundary@npm%3A3.1.4#./.yarn/patches/react-error-boundary-npm-3.1.4-2310dba89e.patch::version=3.1.4&hash=16c58f&locator=test262-report-hermes%40workspace%3A."
+  dependencies:
+    "@babel/runtime": ^7.12.5
+  peerDependencies:
+    react: ">=16.13.1"
+  checksum: acf9c7ccd3809141a25124f4d3da6661fe64118a211f2d66a9f93cc5b138233182f79d75ac31070cc1fcecedd4cd07bb6987452cba5b7068b8392c01fcaca094
   languageName: node
   linkType: hard
 
