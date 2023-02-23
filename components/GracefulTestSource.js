@@ -2,10 +2,6 @@
 
 import * as React from "react";
 
-function Thrower() {
-  throw new Error();
-}
-
 export default class GracefulTestSource extends React.Component {
   static getDerivedStateFromError(error) {
     return { error };

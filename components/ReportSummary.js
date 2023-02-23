@@ -94,9 +94,7 @@ async function TestSummary({ path }) {
         <summary>Source code</summary>
 
         <GracefulTestSource path={path}>
-          <React.Suspense fallback="bad">
-            <Thrower />
-          </React.Suspense>
+          <Thrower />
         </GracefulTestSource>
       </details>
       <Link
