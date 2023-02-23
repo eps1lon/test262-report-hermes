@@ -45,6 +45,11 @@ async function TestSource({ path }) {
   return <pre>{String(source)}</pre>;
 }
 
+async function Thrower() {
+  await setTimeout(5000)
+  throw new Error("bad impl");
+}
+
 async function TestSummary({ path }) {
   const relativePathOnGH = `test/${path.join("/")}`;
 
@@ -87,11 +92,11 @@ async function TestSummary({ path }) {
             : "∅"}
         </ul>
       </div>
-      <details>
+      <details open>
         <summary>Source code</summary>
 
         <GracefulTestSource path={path}>
-          <TestSource path={path} />
+          <Thrower />
         </GracefulTestSource>
       </details>
       <Link
