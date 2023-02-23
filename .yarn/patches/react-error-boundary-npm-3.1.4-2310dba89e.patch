@@ -1,0 +1,18 @@
+diff --git a/dist/react-error-boundary.cjs.js b/dist/react-error-boundary.cjs.js
+index e66fc78a3c61540dd6772a82b6f983332152c0a9..75173f98a601914c47ad811e34227882ca9fca24 100644
+--- a/dist/react-error-boundary.cjs.js
++++ b/dist/react-error-boundary.cjs.js
+@@ -1,3 +1,4 @@
++'use client';
+ 'use strict';
+ 
+ Object.defineProperty(exports, '__esModule', { value: true });
+diff --git a/dist/react-error-boundary.esm.js b/dist/react-error-boundary.esm.js
+index 0777d21fe1f517e93215dfb273629a7e5dcaf927..0a9fa7791de2bb836e16da6ee16db1c82267d1a0 100644
+--- a/dist/react-error-boundary.esm.js
++++ b/dist/react-error-boundary.esm.js
+@@ -1,3 +1,4 @@
++'use client';
+ import _inheritsLoose from '@babel/runtime/helpers/esm/inheritsLoose';
+ import * as React from 'react';
+ 
