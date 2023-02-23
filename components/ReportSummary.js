@@ -1,6 +1,8 @@
 import Link from "next/link";
 import * as React from "react";
 import test262ReportSummary, { loadReport } from "../src/test262ReportSummary";
+import GracefulTestSource from "./GracefulTestSource";
+import { setTimeout } from "timers/promises";
 
 function TestResult({ label, result }) {
   if (result.pass) {
@@ -38,20 +40,7 @@ async function fetchTestSource(path) {
 }
 
 async function TestSource({ path }) {
-  let source;
-  try {
-    source = await fetchTestSource(path);
-  } catch (error) {
-    return (
-      <details>
-        <summary>
-          Failed to fetch source for <code>{path.join("/")}</code>
-        </summary>
-
-        <pre>{String(error.stack)}</pre>
-      </details>
-    );
-  }
+  const source = await fetchTestSource(path);
 
   return <pre>{String(source)}</pre>;
 }
@@ -101,9 +90,9 @@ async function TestSummary({ path }) {
       <details>
         <summary>Source code</summary>
 
-        <React.Suspense fallback="loading source">
+        <GracefulTestSource path={path}>
           <TestSource path={path} />
-        </React.Suspense>
+        </GracefulTestSource>
       </details>
       <Link
         href={`https://github.com/tc39/test262/blob/main/${relativePathOnGH}`}
