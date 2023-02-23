@@ -45,11 +45,6 @@ async function TestSource({ path }) {
   return <pre>{String(source)}</pre>;
 }
 
-async function Thrower() {
-  await setTimeout(5000);
-  throw new Error();
-}
-
 async function TestSummary({ path }) {
   const relativePathOnGH = `test/${path.join("/")}`;
 
@@ -96,7 +91,7 @@ async function TestSummary({ path }) {
         <summary>Source code</summary>
 
         <GracefulTestSource path={path}>
-          <Thrower />
+          <TestSource />
         </GracefulTestSource>
       </details>
       <Link
