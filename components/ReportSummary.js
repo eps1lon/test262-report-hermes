@@ -91,7 +91,7 @@ async function TestSummary({ path }) {
         <summary>Source code</summary>
 
         <GracefulTestSource path={path}>
-          <TestSource />
+          <TestSource path={path} />
         </GracefulTestSource>
       </details>
       <Link
