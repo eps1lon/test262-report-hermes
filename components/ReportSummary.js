@@ -87,7 +87,7 @@ async function TestSummary({ path }) {
             : "∅"}
         </ul>
       </div>
-      <details open>
+      <details>
         <summary>Source code</summary>
 
         <GracefulTestSource path={path}>
