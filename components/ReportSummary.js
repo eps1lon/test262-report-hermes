@@ -2,6 +2,7 @@ import Link from "next/link";
 import * as React from "react";
 import test262ReportSummary, { loadReport } from "../src/test262ReportSummary";
 import GracefulTestSource from "./GracefulTestSource";
+import { setTimeout } from "timers/promises";
 
 function TestResult({ label, result }) {
   if (result.pass) {
@@ -44,7 +45,8 @@ async function TestSource({ path }) {
   return <pre>{String(source)}</pre>;
 }
 
-function Thrower() {
+async function Thrower() {
+  await setTimeout(5000);
   throw new Error();
 }
 
@@ -90,7 +92,7 @@ async function TestSummary({ path }) {
             : "∅"}
         </ul>
       </div>
-      <details>
+      <details open>
         <summary>Source code</summary>
 
         <GracefulTestSource path={path}>
