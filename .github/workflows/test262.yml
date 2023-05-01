@@ -1,5 +1,7 @@
 name: test262
-on: workflow_dispatch
+on: 
+  - workflow_dispatch
+  - push
 env:
   DEBUG: "this:*"
   HERMES_RELEASE: RNv0.71.0
