@@ -7,14 +7,17 @@ const { promisify } = require("util");
 
 const exec = promisify(childProcess.exec);
 
-// Replicates CI. Can be slow
+// Replicates CI for a single shard. Can be slow.
 
 const hermesRelease = "RNv0.71.0";
-const testPattern = "test262/test/**/*.js";
+// CPUs used is shardTotal * maxThreads
+const shardTotal = 1000; // Math.floor(os.cpus().length / 2);
+const maxThreads = 2;
 
-async function test(shard, shardTotal) {
+async function test(shard) {
   const maxWorkers = Math.floor(os.cpus().length / 2);
-  const args = [
+  const command = [
+    "yarn",
     "test262-harness",
     "--host-type",
     "hermes",
@@ -29,15 +32,20 @@ async function test(shard, shardTotal) {
     "--test262-dir",
     "test262",
     "--threads",
-    maxWorkers,
+    maxThreads,
     "--timeout",
     "60000",
     '"test262/test/**/*.js"',
-  ];
-  const command = `yarn ${args.join(" ")}`;
+  ].join(" ");
+  const env = {
+    ...process.env,
+    SHARD_INDEX: shard,
+    SHARD_TOTAL: shardTotal,
+  };
 
-  const { stdout, stderr } = await exec(command);
+  const { stdout, stderr } = await exec(command, { env });
 
+  console.log(stderr);
   await fs.emptyDir(`test262-report-shards/test262-report-${shard}`);
   await fs.writeFile(
     path.resolve(
@@ -50,7 +58,7 @@ async function test(shard, shardTotal) {
 async function main() {
   await fs.emptyDir("test262-report-shards");
 
-  await Promise.all([test(0, maxWorkers)]);
+  await Promise.all([test(0)]);
 
   const command = [
     "node",
