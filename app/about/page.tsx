@@ -1,6 +1,10 @@
 import Link from "next/link";
 import test262ReportSummary from "../../src/test262ReportSummary";
 
+export const metadata = {
+  title: "About Hermes test262 report",
+};
+
 export default async function AboutPage() {
   const { hermesVersion } = await test262ReportSummary([]);
 

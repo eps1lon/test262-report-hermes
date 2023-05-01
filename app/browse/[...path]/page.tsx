@@ -2,6 +2,16 @@ import * as React from "react";
 import Link from "next/link";
 import ReportSummary from "@/components/ReportSummary";
 
+export async function generateMetadata({
+  params,
+}: {
+  params: { path: string[] };
+}) {
+  return {
+    title: `/${params.path.join("/")} Hermes test262 report`,
+  };
+}
+
 export default async function BrowsePage({
   params,
 }: {
