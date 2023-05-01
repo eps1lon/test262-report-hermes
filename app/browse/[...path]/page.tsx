@@ -2,7 +2,11 @@ import * as React from "react";
 import Link from "next/link";
 import ReportSummary from "@/components/ReportSummary";
 
-export default async function BrowsePage({ params }) {
+export default async function BrowsePage({
+  params,
+}: {
+  params: { path: string[] };
+}) {
   return (
     <React.Fragment>
       <nav>
@@ -36,7 +40,6 @@ export default async function BrowsePage({ params }) {
           </li>
         </ol>
       </nav>
-
       <ReportSummary path={params.path} />
     </React.Fragment>
   );

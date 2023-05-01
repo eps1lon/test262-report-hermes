@@ -1,10 +1,14 @@
 import Link from "next/link";
 import * as React from "react";
-import test262ReportSummary, { loadReport } from "../src/test262ReportSummary";
+import test262ReportSummary, {
+  type Test262Result,
+  type TestResult,
+  loadReport,
+} from "../src/test262ReportSummary";
 import GracefulTestSource from "./GracefulTestSource";
 import { setTimeout } from "timers/promises";
 
-function TestResult({ label, result }) {
+function TestResult({ label, result }: { label: string; result: TestResult }) {
   if (result.pass) {
     return (
       <span className="text-green-900 p-1 border-green-700 border-2">
@@ -26,7 +30,7 @@ function TestResult({ label, result }) {
   );
 }
 
-async function fetchTestSource(path) {
+async function fetchTestSource(path: string[]) {
   const relativePathOnGH = `test/${path.join("/")}`;
   const response = await fetch(
     `https://cdn.jsdelivr.net/gh/tc39/test262@main/${relativePathOnGH}`
@@ -39,24 +43,38 @@ async function fetchTestSource(path) {
   return response.text();
 }
 
-async function TestSource({ path }) {
+async function TestSource({
+  path,
+}: {
+  path: string[];
+}): // @ts-expect-error -- Requires https://github.com/DefinitelyTyped/DefinitelyTyped/pull/65135
+any {
   const source = await fetchTestSource(path);
 
   return <pre>{String(source)}</pre>;
 }
 
-
-async function TestSummary({ path }) {
+async function TestSummary({
+  path,
+}: {
+  path: string[];
+}): // @ts-expect-error -- Requires https://github.com/DefinitelyTyped/DefinitelyTyped/pull/65135
+any {
   const relativePathOnGH = `test/${path.join("/")}`;
 
   const [report] = await Promise.all([loadReport()]);
-  let test = report;
+  let currentTest = report;
   for (const key of path) {
-    if (!(key in test)) {
-      throw new Error(`${key} does not exist in one of ${Object.keys(test)}`);
+    if (!(key in currentTest)) {
+      throw new Error(
+        `${key} does not exist in one of ${Object.keys(currentTest)}`
+      );
     }
-    test = test[key];
+    // @ts-expect-error -- Just verified at runtime that `key` is in `node`
+    currentTest = currentTest[key];
   }
+  // @ts-expect-error -- YOLO
+  const test: Test262Result = currentTest;
   const testName = path[path.length - 1];
 
   // Server Error
@@ -104,8 +122,13 @@ async function TestSummary({ path }) {
   );
 }
 
-async function SuiteSummary({ path }) {
-  const { summary, hermesVersion } = await test262ReportSummary(path);
+async function SuiteSummary({
+  path,
+}: {
+  path: string[];
+}): // @ts-expect-error -- Requires https://github.com/DefinitelyTyped/DefinitelyTyped/pull/65135
+any {
+  const { summary } = await test262ReportSummary(path);
 
   return (
     <>
@@ -136,7 +159,12 @@ async function SuiteSummary({ path }) {
   );
 }
 
-export default async function ReportSummary({ path }) {
+export default async function ReportSummary({
+  path,
+}: {
+  path: string[];
+}): // @ts-expect-error -- Requires https://github.com/DefinitelyTyped/DefinitelyTyped/pull/65135
+any {
   return path.length > 0 && path[path.length - 1].endsWith(".js") ? (
     <TestSummary path={path} />
   ) : (
