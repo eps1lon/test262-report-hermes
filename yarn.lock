@@ -7124,7 +7124,7 @@ __metadata:
     react-native: ^0.71.3
     tailwindcss: ^3.2.7
     test262-harness: ^10.0.0
-    typescript: 5.0.4
+    typescript: 5.1.0-dev.20230501
   languageName: unknown
   linkType: soft
 
@@ -7267,23 +7267,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:5.0.4":
-  version: 5.0.4
-  resolution: "typescript@npm:5.0.4"
+"typescript@npm:5.1.0-dev.20230501":
+  version: 5.1.0-dev.20230501
+  resolution: "typescript@npm:5.1.0-dev.20230501"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 82b94da3f4604a8946da585f7d6c3025fff8410779e5bde2855ab130d05e4fd08938b9e593b6ebed165bda6ad9292b230984f10952cf82f0a0ca07bbeaa08172
+  checksum: 3c3de0410f032dcba943ee1e0de1cae83e9364b46ba7fa2e3c1e5721a5583b3375dbf81ff8a551dfa8ba80ef6c853a7b512f01ea487df3df77b328a1148c189c
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@5.0.4#~builtin<compat/typescript>":
-  version: 5.0.4
-  resolution: "typescript@patch:typescript@npm%3A5.0.4#~builtin<compat/typescript>::version=5.0.4&hash=1f5320"
+"typescript@patch:typescript@5.1.0-dev.20230501#~builtin<compat/typescript>":
+  version: 5.1.0-dev.20230501
+  resolution: "typescript@patch:typescript@npm%3A5.1.0-dev.20230501#~builtin<compat/typescript>::version=5.1.0-dev.20230501&hash=1f5320"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 6a1fe9a77bb9c5176ead919cc4a1499ee63e46b4e05bf667079f11bf3a8f7887f135aa72460a4c3b016e6e6bb65a822cb8689a6d86cbfe92d22cc9f501f09213
+  checksum: 92bc46d47e9e507ca471b79aee825d24d075379033f61528ba2c3a83d1878c4270feaf4114fe85b12b6f13fc3a9db5b9f63563b0d4e1b10443bd6bcd849eaf3e
   languageName: node
   linkType: hard
 
