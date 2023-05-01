@@ -8,7 +8,8 @@
     "hermes": "./hermes-release/bin/hermes",
     "hermes:verify": "TODO: check if hermes submodule tag matches bundled .hermesversion in RN",
     "playground": "yarn hermes -exec playground/playground.js",
-    "start": "next start"
+    "start": "next start",
+    "test:types": "tsc -p tsconfig.json --noEmit"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.1",

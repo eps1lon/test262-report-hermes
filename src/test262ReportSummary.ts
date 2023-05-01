@@ -4,7 +4,28 @@ import * as process from "node:process";
 
 const HERMES_RELEASE = "RNv0.71.0";
 
-export async function loadReport() {
+interface PassedTest {
+  pass: true;
+}
+
+interface FailedTest {
+  pass: false;
+  message: string;
+}
+
+export type TestResult = PassedTest | FailedTest;
+
+export interface Test262Result {
+  strict: TestResult;
+  nonStrict: TestResult;
+  attrs: {
+    features: string[];
+  };
+}
+
+interface Test262Report extends Array<Test262Report | Test262Result> {}
+
+export async function loadReport(): Promise<Test262Report> {
   const reportModule = await import(
     `../hermes-releases/${HERMES_RELEASE}/report/test262-report.compressed.json`
   );
@@ -61,13 +82,13 @@ interface HermesVersion {
   commit: string;
 }
 
-function parseHermesVersion(hermesVersionString): HermesVersion {
+function parseHermesVersion(hermesVersionString: string): HermesVersion {
   const [hermesIdentifier, year, month, day, rnTag, commitHash] =
     hermesVersionString.split("-");
-  const [, reactNativeVersion] = rnTag.match(/RNv(.*)/);
+  const [, reactNativeVersion] = rnTag.match(/RNv(.*)/)!;
 
   return {
-    createdAt: new Date(year, month, day),
+    createdAt: new Date(+year, +month, +day),
     reactNativeVersion,
     commit: commitHash,
   };
@@ -107,6 +128,7 @@ export default async function test262ReportSummary(
 
       throw error;
     }
+    // @ts-expect-error -- Just verified at runtime that `key` is in `node`
     node = node[key];
   }
 

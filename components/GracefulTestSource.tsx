@@ -2,7 +2,7 @@
 import * as React from "react";
 import { ErrorBoundary } from "react-error-boundary";
 
-function ErrorFallback({ error, path }) {
+function ErrorFallback({ error, path }: { error: Error; path: string[] }) {
   return (
     <details>
       <summary>
@@ -14,7 +14,13 @@ function ErrorFallback({ error, path }) {
   );
 }
 
-export default function GracefulTestSource({ children, path }) {
+export default function GracefulTestSource({
+  children,
+  path,
+}: {
+  children: React.ReactNode;
+  path: string[];
+}) {
   return (
     <ErrorBoundary
       fallbackRender={(props) => <ErrorFallback {...props} path={path} />}

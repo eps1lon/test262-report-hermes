@@ -3,7 +3,11 @@ import "./globals.css";
 import Link from "next/link";
 import test262ReportSummary from "../src/test262ReportSummary";
 
-export default async function RootLayout({ children }) {
+export default async function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const { hermesVersion } = await test262ReportSummary([]);
 
   return (
