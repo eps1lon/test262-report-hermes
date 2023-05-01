@@ -3,6 +3,10 @@ import "./globals.css";
 import Link from "next/link";
 import test262ReportSummary from "../src/test262ReportSummary";
 
+export const metadata = {
+  title: 'Hermes test262 report',
+}
+
 export default async function RootLayout({
   children,
 }: {
