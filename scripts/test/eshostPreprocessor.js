@@ -11,7 +11,10 @@ if (Number.isNaN(shardIndex)) {
   debug(`Handling shard ${shardIndex + 1}/${shardTotal}`);
 }
 
-const enableSharding = !Number.isNaN(shardIndex) && !Number.isNaN(shardTotal);
+const enableSharding =
+  // Disabled for now since the index given to the preprocessor is not stable for a test
+  // Ideally we would receive the tests in a stable order.
+  false && !Number.isNaN(shardIndex) && !Number.isNaN(shardTotal);
 
 function shardPreprocessor(test, index) {
   if (!enableSharding) {
