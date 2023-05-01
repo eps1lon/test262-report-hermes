@@ -28,7 +28,7 @@ jobs:
           SHARD_INDEX: ${{matrix.shard}}
           # Number of entries in test.strategy.matrix.shard
           # We could use ${{ strategy.job-total }} but that breaks once we introduce more dimensions beyond "shard" (e.g. architecture)
-          SHARD_TOTAL: 1
+          SHARD_TOTAL: 20
         run: |
           # --threads with more than 1 produced unstable results i.e. some test results were not reported
           yarn test262-harness \
